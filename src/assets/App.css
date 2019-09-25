@@ -1,0 +1,40 @@
+body {
+  background-color: #282c34;
+  padding: 1rem;
+}
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+a {
+  color: #09d3ac;
+  text-decoration: none;
+}
+a:hover {
+  color: #09d3ac;
+}
+
+.header,
+.footer {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+}
+
+.content-textarea {
+  min-height: 60vh;
+  background: none;
+  width: 100%;
+  font-size: calc(10px + 2vmin);
+  border: none;
+}
