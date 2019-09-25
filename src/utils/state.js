@@ -1,13 +1,17 @@
 import React from "react";
-
+import { textToArray, getText } from "./helpers";
 export const EditorContext = React.createContext(null);
 
-export const ACTIONS = {  
+export const ACTIONS = {
   SELECT_WORD: "SELECT_WORD",
   TOGGLE_STYLE: "TOGGLE_STYLE"
 };
 
-export const initialState = { words: [], styles: {}, selected: null };
+export const initialState = {
+  words: textToArray(getText()),
+  styles: {},
+  selected: null
+};
 
 export function reducer(state, action) {
   switch (action.type) {

@@ -1,16 +1,24 @@
-import React, { useState } from "react";
-import { getText } from "../utils";
+import React, { useRef, useState, useContext } from "react";
+import { getText, EditorContext } from "../utils";
 
 export function Content() {
-  const [text, setText] = useState(getText());
+  const { editor, dispatch } = useContext(EditorContext);
+  const ref = useRef(null);
   function onChange(e) {
-    setText(e.target.value)
-  }  
+    console.log(e, ref);
+  }
   return (
     <div className="content">
-      <textarea className="content-textarea" onChange={onChange}>
-        {text}
-      </textarea>
+      <div
+        ref={ref}
+        className="content-textarea"
+        onInput={onChange}
+        contenteditable="true"
+      >
+        {editor.words.map((text, index) => {
+          return <span>{text} </span>;
+        })}
+      </div>
     </div>
   );
 }
