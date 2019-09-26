@@ -21,9 +21,13 @@ export function reducer(state, action) {
       return { ...state, words: action.payload };
     case ACTIONS.SET_WORD:
       const { words } = { ...state };
-      const newwords = textToArray(action.payload.content);
+      // const newWords = textToArray(
+      //   action.payload.content,
+      //   words[action.payload.key].styles
+      // );
       words[action.payload.key].text = action.payload.content;
-      return { ...state, words };
+      // words.splice(action.payload.key, 1, ...newWords);
+      return { ...state, words: [...words] };
     case ACTIONS.SELECT_WORD:
       return { ...state, selected: action.payload };
     case ACTIONS.TOGGLE_STYLE:
@@ -33,8 +37,9 @@ export function reducer(state, action) {
         state.words[state.selected].styles = styles.filter(
           style => style !== payload
         );
-      } else state.words[state.selected].styles.push(payload);
-
+      } else {
+        state.words[state.selected].styles.push(payload);
+      }
       return { ...state, words: [...state.words] };
     default:
       throw new Error();
