@@ -3,5 +3,24 @@ export function getText() {
 }
 
 export function textToArray(text) {
-  return text.split(" ");
+  return text.split(" ").map((s, key) => ({
+    text: s,
+    styles: []
+  }));
+}
+
+export function spanToArray(spans) {
+  return Array.from(spans)
+    .map(span => span.textContent.trim())
+    .join(" ")
+    .split(" ");
+}
+
+export function setCaretOnFocus(element) {
+  var selection = window.getSelection();
+  var range = document.createRange();
+  selection.removeAllRanges();
+  range.selectNodeContents(element);
+  range.collapse(false);
+  selection.addRange(range);
 }
